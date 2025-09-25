@@ -6,17 +6,17 @@ const userController = require("../controllers/userController");
 
 // USER ROUTES
 // USER ROUTE CREATED TO USE EXPRESS ROUTER
-const route = express.Router();
+const router = express.Router();
 
-route
+router
   .route("/")
   .get(userController.getAllUsers)
   .post(userController.createUser);
 
-route
+router
   .route("/:id")
   .get(userController.getUser)
   .patch(userController.updateUser)
   .delete(userController.deleteUser);
 
-module.exports = route;
+module.exports = router;

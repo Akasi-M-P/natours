@@ -4,17 +4,19 @@ const express = require("express");
 // CUSTOM MODULES
 const tourController = require("../controllers/tourController");
 
-const route = express.Router();
+const router = express.Router();
 
-route
+router.param("id", tourController.checkID);
+
+router
   .route("/")
   .get(tourController.getAllTours)
   .post(tourController.createTour);
 
-route
+router
   .route("/:id")
   .get(tourController.getTour)
   .patch(tourController.updateTour)
   .delete(tourController.deleteTour);
 
-module.exports = route;
+module.exports = router;
